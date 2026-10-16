@@ -1,0 +1,11 @@
+# Brainstorming screens
+.superpowers/
+
+# Old working copies, replaced by assets/site (built from the "On the website" folder)
+assets/work/
+assets/video/
+sample/options.html
+
+# Showreel working files; the site uses assets/site/showreel.mp4
+showreel/work/
+showreel/*.mp4

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ledger" data-hero="fan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mateen Ahsan — Graphic Designer & Video Editor in Riyadh</title>
+<meta name="description" content="Mateen Ahsan, graphic designer and video editor based in Riyadh. Luxury real estate posters, brochures, reels and social media for Dubai developers. Available now.">
+<meta property="og:title" content="Mateen Ahsan — Graphic Designer & Video Editor">
+<meta property="og:description" content="Luxury real estate design, reels and social media. Based in Riyadh, available now.">
+<meta property="og:image" content="assets/site/hampstead-altan-dubai-creek-harbour.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141414'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EMA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<style>
+  /* Colour themes. Each also feeds the moving background: --s0..--s3 colour the silk and --silk sets how strongly it shows. */
+  /* Ledger: the Hidden Ledger greens on a light page (chosen). Silk kept soft so it never competes with the work. */
+  :root, [data-theme="ledger"] { --bg:#F5FAF6; --ink:#0B2B26; --soft:#4f6b63; --line:rgba(11,43,38,.10); --chip:#DAF1DE; --chip2:#C9E2D1; --accent:#235347; --card:#ffffff;
+    --s0:#F5FAF6; --s1:#DAF1DE; --s2:#8EB69B; --s3:#CFE3D5; --dot:11,43,38; --silk:.6; }
+  /* Forest & Copper: deep green with a metallic copper accent (runner-up). */
+  [data-theme="copper"] { --bg:#F7F4EF; --ink:#102A23; --soft:#5b6660; --line:rgba(16,42,35,.10); --chip:#EBDCCB; --chip2:#D6E5DB; --accent:#A8643A; --card:#ffffff;
+    --s0:#F7F4EF; --s1:#EBDCCB; --s2:#C99A73; --s3:#D6E5DB; --dot:16,42,35; --silk:.7; }
+  /* Navy & Brass: hotel-lobby luxury; the navy matches the suits and skies in the work. */
+  [data-theme="navy"] { --bg:#F6F5F1; --ink:#14213D; --soft:#5a6377; --line:rgba(20,33,61,.10); --chip:#DDE3F0; --chip2:#EFE2C8; --accent:#A8844C; --card:#ffffff;
+    --s0:#F6F5F1; --s1:#DDE3F0; --s2:#A6B4D4; --s3:#EFE2C8; --dot:20,33,61; --silk:.7; }
+  /* Champagne Gold: warm ivory and gold, the classic luxury brochure. */
+  [data-theme="gold"] { --bg:#FAF7F1; --ink:#1F1A14; --soft:#6d655a; --line:rgba(31,26,20,.09); --chip:#EFE3CC; --chip2:#F3ECE2; --accent:#9E7838; --card:#ffffff;
+    --s0:#FAF7F1; --s1:#EFE3CC; --s2:#D8BE8E; --s3:#F3ECE2; --dot:31,26,20; --silk:.7; }
+  /* Gulf Blue: sea and sky, light and fresh. */
+  [data-theme="gulf"] { --bg:#F4F8FB; --ink:#0E2A3B; --soft:#55697a; --line:rgba(14,42,59,.10); --chip:#D6E8F2; --chip2:#E9EEF2; --accent:#1F6F8B; --card:#ffffff;
+    --s0:#F4F8FB; --s1:#D6E8F2; --s2:#93C3DA; --s3:#E9EEF2; --dot:14,42,59; --silk:.7; }
+  /* Desert Rose: soft dusty pink and plum, warm and personal. */
+  [data-theme="rose"] { --bg:#FAF5F3; --ink:#2E1F24; --soft:#6f5d62; --line:rgba(46,31,36,.09); --chip:#F1DCD6; --chip2:#EEE4DD; --accent:#9C5568; --card:#ffffff;
+    --s0:#FAF5F3; --s1:#F1DCD6; --s2:#D9A9A8; --s3:#EEE4DD; --dot:46,31,36; --silk:.7; }
+  /* Charcoal & Gold: dark and dramatic, gold light. */
+  [data-theme="charcoal"] { --bg:#121212; --ink:#F1ECE3; --soft:#9b958b; --line:rgba(255,255,255,.09); --chip:#3a3020; --chip2:#2a2826; --accent:#C9A46A; --card:#1b1b1b;
+    --s0:#121212; --s1:#1f1b15; --s2:#5e4b2c; --s3:#24221f; --dot:241,236,227; --silk:.85; }
+
+  * { box-sizing:border-box; }
+  html { scroll-padding-top:90px; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:'Bricolage Grotesque',system-ui,sans-serif; font-optical-sizing:auto; -webkit-font-smoothing:antialiased; transition:background .5s, color .5s; }
+  a { color:inherit; text-decoration:none; }
+  img { max-width:100%; }
+  #bg { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .wrap { position:relative; z-index:1; max-width:1180px; margin:0 auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+  .band { border-bottom:1px solid var(--line); }
+  .eyebrow { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); margin:0 0 14px; }
+  h2.title { font-weight:500; font-size:clamp(28px,3.2vw,40px); letter-spacing:-.02em; margin:0; }
+
+  /* ── floating pill bar (Nexora style) ── */
+  .bar { position:fixed; inset:0 0 auto; z-index:40; pointer-events:none; }
+  .pill { pointer-events:auto; position:relative; display:flex; align-items:center; justify-content:space-between; gap:14px;
+    width:min(100% - 24px, 1100px); height:58px; margin:12px auto 0; padding:0 8px 0 18px; border-radius:999px;
+    background:color-mix(in srgb, var(--bg) 68%, transparent); -webkit-backdrop-filter:saturate(180%) blur(18px); backdrop-filter:saturate(180%) blur(18px);
+    border:1px solid color-mix(in srgb, var(--accent) 24%, transparent); box-shadow:0 10px 40px -18px color-mix(in srgb, var(--ink) 35%, transparent);
+    transition:width .55s cubic-bezier(.2,.7,.2,1), height .55s cubic-bezier(.2,.7,.2,1), margin .55s, background .5s; }
+  .bar.compact .pill { width:min(100% - 24px, 860px); height:50px; margin-top:8px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:16px; perspective:300px; }
+  .mono { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--ink); color:var(--bg); font-size:12px; font-weight:600; letter-spacing:.02em; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+  .brand:hover .mono { transform:rotateY(360deg); }
+  .menu { position:relative; display:flex; gap:2px; }
+  .menu a { position:relative; z-index:1; padding:8px 14px; border-radius:999px; font-size:15px; font-weight:500; transition:color .25s, background-color .35s; }
+  .menu a:hover { color:var(--accent); }
+  .menu a[aria-current] { background:var(--chip); }
+  .glow { position:absolute; inset:-4px -8px; border-radius:999px; pointer-events:none; opacity:0; transition:opacity .3s;
+    background:radial-gradient(90px 40px at var(--gx,50%) 50%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 70%); }
+  .menu:hover .glow { opacity:1; }
+  .actions { display:flex; align-items:center; gap:8px; }
+  .icon-btn { display:grid; place-items:center; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:all .25s; }
+  .icon-btn:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .icon-btn svg { width:18px; height:18px; }
+  .cta { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 18px; border-radius:999px; background:var(--ink); color:var(--bg); font-size:14px; font-weight:500; position:relative; overflow:hidden; z-index:0; }
+  .cta::before { content:''; position:absolute; inset:0; background:var(--accent); transform:translateX(-101%); transition:transform .35s cubic-bezier(.6,0,.2,1); z-index:-1; }
+  .cta:hover::before { transform:none; }
+  .cta .arr { transition:transform .3s; } .cta:hover .arr { transform:translate(2px,-2px); }
+  .progress { position:absolute; left:26px; right:26px; bottom:-1px; height:2px; border-radius:2px; overflow:hidden; }
+  .progress span { display:block; height:100%; background:var(--accent); transform:scaleX(0); transform-origin:left; }
+  .menu-btn { display:none; }
+  .sheet { position:fixed; inset:0; z-index:60; background:var(--bg); padding:90px 24px 30px; display:none; flex-direction:column; gap:6px; }
+  .sheet.open { display:flex; animation:fade .3s; }
+  .sheet a { font-size:30px; font-weight:500; padding:12px 0; border-bottom:1px solid var(--line); }
+  .sheet .close { position:absolute; top:18px; right:18px; }
+
+  /* ── hero ── */
+  .hero { isolation:isolate; }
+  .hv { display:none; }
+  html[data-hero="classic"] .hv-classic, html[data-hero="fan"] .hv-fan, html[data-hero="reel"] .hv-reel, html[data-hero="marquee"] .hv-marquee { display:block; }
+  html[data-hero="fan"] .hv-fan, html[data-hero="reel"] .hv-reel { display:grid; }
+  .hv-classic { padding:190px 28px 120px; text-align:center; }
+  .hv-classic h1 { font-weight:400; font-size:clamp(32px,4.8vw,62px); line-height:1.18; letter-spacing:-.025em; margin:0; }
+
+  /* shared by the new heroes */
+  .hv-fan, .hv-reel { grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); align-items:center; gap:30px; padding:150px 48px 90px; min-height:760px; }
+  .h-eyebrow { font-size:14px; color:var(--soft); margin:0 0 22px; opacity:0; animation:fade .8s .1s forwards; }
+  .h-eyebrow .dot, .hv .meta .dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#2e9e62; margin-right:8px; animation:pulse 2s infinite; }
+  .h-big { font-weight:500; font-size:clamp(40px,5.6vw,80px); line-height:1.02; letter-spacing:-.04em; margin:0; }
+  .h-sub { font-size:18px; line-height:1.5; color:var(--soft); max-width:440px; margin:26px 0 30px; opacity:0; animation:fade .8s .7s forwards; }
+  .h-btns { display:flex; gap:10px; flex-wrap:wrap; opacity:0; animation:fade .8s .9s forwards; }
+  .h-btns .btn { margin:0; }
+  .btn.solid { background:var(--ink); color:var(--bg); } .btn.solid::before { background:var(--accent); } .btn.solid:hover { color:#fff; }
+  /* the rotating word sits on the theme's chip colour and slides up to the next */
+  .rot { position:relative; display:inline-block; padding:0 .14em; border-radius:.14em; background:var(--chip); transition:width .45s cubic-bezier(.2,.7,.2,1); vertical-align:bottom; overflow:hidden; height:1.06em; white-space:nowrap; }
+  .rot b { display:block; font-weight:500; color:var(--accent); transition:transform .55s cubic-bezier(.7,0,.2,1); }
+  .rot b span { display:block; height:1.06em; }
+  .hello { display:inline-flex; align-items:center; gap:10px; padding:5px 14px 5px 5px; border:1px solid var(--line); border-radius:99px; background:var(--card); font-size:14px; margin-bottom:26px; opacity:0; animation:fade .8s forwards; }
+  .hello img { width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:50% 20%; }
+
+  /* A · fan of posters, dealt out on load, leaning towards the mouse */
+  .fan { position:relative; height:560px; perspective:1200px; }
+  .fan .card { position:absolute; left:50%; top:50%; width:68%; border-radius:10px; overflow:hidden; box-shadow:0 30px 60px -25px rgba(0,0,0,.45); background:#fff;
+    transform:translate(-50%,-50%) rotate(0) scale(.9); opacity:0; transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .4s; animation:deal 1s cubic-bezier(.2,.7,.2,1) forwards; }
+  .fan .card img { display:block; width:100%; }
+  .fan .c1 { --r:-11deg; --x:-78%; --y:-46%; animation-delay:.35s; }
+  .fan .c2 { --r:9deg; --x:-22%; --y:-56%; animation-delay:.5s; }
+  .fan .c3 { --r:-2deg; --x:-50%; --y:-44%; animation-delay:.65s; z-index:2; }
+  @keyframes deal { from { opacity:0; transform:translate(-50%,-30%) rotate(0) scale(.85); } to { opacity:1; transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1); } }
+  /* Once dealt, the cards hold still in place. The cursor never targets a single card: under a tilt the card beneath it
+     keeps changing, and a per-card hover made them swap places back and forth. Instead the whole fan opens a little. */
+  .fan .card.dealt { animation:none; opacity:1; transform:translate(var(--x),var(--y)) rotate(var(--r)); transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+  .fan .card { pointer-events:none; }
+  .fan.open .c1 { --x:-86%; --r:-14deg; } .fan.open .c2 { --x:-14%; --r:12deg; } .fan.open .c3 { --y:-47%; }
+  .fan-inner { position:absolute; inset:0; transform-style:preserve-3d; will-change:transform; }
+
+  /* B · phone with a reel */
+  .phone-wrap { position:relative; display:grid; place-items:center; height:600px; }
+  .phone { width:290px; aspect-ratio:9/19; border-radius:42px; padding:10px; background:#0d0d0d; box-shadow:0 40px 80px -30px rgba(0,0,0,.5), inset 0 0 0 2px #2a2a2a;
+    opacity:0; animation:phoneIn 1s .3s cubic-bezier(.2,.7,.2,1) forwards; }
+  .phone video { width:100%; height:100%; object-fit:cover; border-radius:33px; display:block; background:#111; }
+  @keyframes phoneIn { from { opacity:0; transform:translateY(40px) rotate(4deg); } to { opacity:1; transform:rotate(-3deg); } }
+  .float { position:absolute; background:var(--card); border:1px solid var(--line); border-radius:99px; padding:9px 16px; font-size:14px; box-shadow:0 12px 30px -14px rgba(0,0,0,.25);
+    opacity:0; animation:fade .6s forwards, bob 5s ease-in-out infinite; }
+  .f1 { left:2%; top:22%; animation-delay:1s, 1s; } .f2 { right:0; top:48%; animation-delay:1.2s, 1.6s; } .f3 { left:8%; bottom:16%; animation-delay:1.4s, .4s; }
+  @keyframes bob { 50% { transform:translateY(-10px); } }
+
+  /* C · statement + sliding strip of work */
+  .hv-marquee { padding:150px 0 60px; }
+  .m-top { padding:0 48px; }
+  .h-huge { font-weight:500; font-size:clamp(44px,7.4vw,108px); line-height:.98; letter-spacing:-.045em; margin:0; }
+  .h-huge em { font-style:normal; color:var(--accent); }
+  .strip { margin:56px 0 30px; overflow:hidden; transform:rotate(-2deg); padding:10px 0; -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+  .track { display:flex; gap:16px; width:max-content; animation:slide 50s linear infinite; }
+  .strip:hover .track { animation-play-state:paused; }
+  .track img, .track video { height:240px; width:auto; border-radius:8px; display:block; transition:transform .4s; }
+  .track img:hover { transform:translateY(-6px); }
+  @keyframes slide { to { transform:translateX(-50%); } }
+  .hv-marquee .meta { justify-content:flex-start; padding:0 48px; }
+  .ln { display:block; overflow:hidden; padding-bottom:.06em; }
+  .ln > span { display:inline-block; transform:translateY(110%); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .ln:nth-child(2) > span { animation-delay:.12s } .ln:nth-child(3) > span { animation-delay:.24s }
+  @keyframes rise { to { transform:translateY(0) } }
+  .chip { position:relative; padding:0 .16em; white-space:nowrap; font-weight:500; }
+  .chip::before { content:''; position:absolute; inset:.08em -.04em .02em; background:var(--chip); border-radius:.18em; z-index:-1; transform:scaleX(0); transform-origin:left; animation:sweep .7s .9s cubic-bezier(.6,0,.2,1) forwards; transition:background .5s; }
+  .chip.b::before { background:var(--chip2); animation-delay:1.1s; }
+  @keyframes sweep { to { transform:scaleX(1) } }
+  .scribble { display:block; margin:20px auto 0; width:230px; height:14px; color:var(--ink); }
+  .scribble path { stroke-dasharray:260; stroke-dashoffset:260; animation:draw 1s 1.4s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset:0 } }
+  .meta { margin-top:30px; font-size:14px; color:var(--soft); opacity:0; animation:fade .8s 1.6s forwards; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; align-items:center; }
+  .meta .dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#2e9e62; margin-right:7px; animation:pulse 2s infinite; }
+  .meta a { border-bottom:1px solid var(--line); }
+  @keyframes fade { to { opacity:1 } } @keyframes pulse { 50% { opacity:.35 } }
+
+  /* ── work ── */
+  .work-head { display:flex; justify-content:space-between; align-items:end; padding:46px 28px 26px; flex-wrap:wrap; gap:16px; }
+  .tabs button { font:inherit; font-size:14px; background:none; border:1px solid transparent; border-radius:99px; padding:7px 15px; color:var(--soft); cursor:pointer; transition:all .25s; }
+  .tabs button:hover { color:var(--ink); } .tabs button.on { border-color:var(--ink); color:var(--ink); }
+  .grid { columns:3 300px; column-gap:18px; padding:4px 22px 22px; }
+  .item { break-inside:avoid; margin-bottom:24px; cursor:pointer; display:block; }
+  .item.hide { display:none; }
+  /* Only the first twelve until "Show all"; a filter tab always shows its whole category. */
+  .grid.short .item:nth-child(n+13) { display:none; }
+  .more-wrap { text-align:center; padding:0 0 46px; } .more-wrap.gone { display:none; }
+  .more-wrap .btn { cursor:pointer; background:none; font:inherit; color:inherit; }
+  .frame { overflow:hidden; border-radius:8px; background:var(--line); position:relative; }
+  .frame img, .frame video { display:block; width:100%; height:auto; transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .item:hover .frame img, .item:hover .frame video { transform:scale(1.035); }
+  .badge { position:absolute; left:10px; top:10px; background:rgba(0,0,0,.55); color:#fff; font-size:11px; padding:4px 9px; border-radius:99px; backdrop-filter:blur(4px); }
+  .cap { display:flex; flex-direction:column; gap:2px; padding-top:10px; font-size:15px; }
+  .cap b { font-weight:500; } .cap span { color:var(--soft); font-size:13px; }
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* ── showreel ── */
+  .reel-head { padding:46px 28px 22px; }
+  .reel-wrap { position:relative; margin:0 28px 40px; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#0B2B26; box-shadow:0 30px 60px -30px rgba(11,43,38,.45); }
+  .reel-wrap video { width:100%; height:100%; object-fit:cover; display:block; }
+  .reel-play { position:absolute; left:50%; top:50%; translate:-50% -50%; display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border:0; border-radius:99px;
+    background:rgba(245,250,246,.92); color:var(--ink); font:500 16px 'Bricolage Grotesque',sans-serif; cursor:pointer; backdrop-filter:blur(8px); transition:transform .3s, opacity .3s; }
+  .reel-play:hover { transform:scale(1.05); }
+  .reel-play span { display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff; font-size:12px; }
+  .reel-wrap.playing .reel-play { opacity:0; pointer-events:none; }
+
+  /* ── case studies ── */
+  .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; padding:0 28px 46px; }
+  .case { border:1px solid var(--line); border-radius:14px; background:var(--card); padding:16px 16px 22px; display:flex; flex-direction:column; }
+  .case-cover { aspect-ratio:16/10; border-radius:10px; overflow:hidden; background:var(--line); }
+  .case-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .case:hover .case-cover img { transform:scale(1.035); }
+  .case-meta { font-size:13px; color:var(--soft); margin:18px 6px 4px; }
+  .case h3 { font-size:26px; font-weight:500; letter-spacing:-.02em; margin:0 6px 14px; }
+  .case dl { margin:0 6px 20px; display:grid; grid-template-columns:110px 1fr; gap:10px 14px; font-size:15px; line-height:1.5; }
+  .case dt { color:var(--accent); font-weight:500; } .case dd { margin:0; }
+  .case-btn { align-self:flex-start; margin:auto 6px 0; cursor:pointer; background:none; font:inherit; color:inherit; }
+
+  /* ── about ── */
+  .about { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
+  .about .photo { border-right:1px solid var(--line); padding:28px; }
+  .portrait { aspect-ratio:4/5; border-radius:10px; overflow:hidden; background:linear-gradient(160deg,var(--chip),var(--chip2)); position:relative; }
+  .portrait img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(.15); transition:filter .6s, transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .portrait:hover img { filter:none; transform:scale(1.03); }
+  .portrait img + .ph { display:none; } /* the placeholder shows only if the photo failed to load (and was removed) */
+  .portrait .ph { position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:var(--soft); font-size:14px; }
+  .portrait .ph b { display:block; font-size:64px; font-weight:500; color:var(--ink); opacity:.25; }
+  .about .text { padding:46px 40px; }
+  .about p.lead { font-size:clamp(20px,1.9vw,25px); line-height:1.45; letter-spacing:-.01em; margin:0 0 26px; }
+  .services { display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--line); margin-top:30px; }
+  .services div { padding:18px 0; border-bottom:1px solid var(--line); font-size:15px; display:flex; gap:12px; align-items:baseline; }
+  .services div:nth-child(odd) { padding-right:16px; }
+  .services i { font-style:normal; font-size:12px; color:var(--accent); font-weight:600; }
+
+  /* ── experience ── */
+  .exp { padding:46px 28px; }
+  .job { display:grid; grid-template-columns:200px 1fr auto; gap:20px; padding:22px 0; border-bottom:1px solid var(--line); align-items:baseline; transition:padding .35s; }
+  .job:hover { padding-left:10px; }
+  .job .when { color:var(--soft); font-size:14px; }
+  .job b { font-weight:500; font-size:20px; display:block; }
+  .job span.d { color:var(--soft); font-size:15px; }
+  .job .where { color:var(--soft); font-size:14px; text-align:right; }
+
+  .numbers { display:grid; grid-template-columns:repeat(3,1fr); }
+  .numbers div { padding:44px 28px; border-right:1px solid var(--line); text-align:center; }
+  .numbers div:last-child { border-right:0; }
+  .numbers b { display:block; font-weight:400; font-size:56px; letter-spacing:-.03em; }
+  .numbers span { font-size:14px; color:var(--soft); }
+  .brands { padding:42px 28px; text-align:center; }
+  .brands .row { display:flex; justify-content:center; gap:56px; flex-wrap:wrap; font-size:28px; font-weight:500; color:var(--soft); opacity:.7; }
+  .brands .row span { transition:color .3s, opacity .3s; } .brands .row span:hover { color:var(--ink); opacity:1; }
+  .tools { padding:30px 28px 40px; text-align:center; }
+  .tools .row { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .tools .row span { border:1px solid var(--line); border-radius:99px; padding:8px 16px; font-size:14px; background:var(--card); transition:transform .3s, border-color .3s; }
+  .tools .row span:hover { transform:translateY(-3px); border-color:var(--accent); }
+
+  footer { padding:110px 28px 40px; text-align:center; }
+  footer h2 { font-weight:400; font-size:clamp(34px,5vw,64px); letter-spacing:-.03em; margin:0 0 26px; }
+  .btn { display:inline-block; border:1px solid var(--ink); border-radius:99px; padding:13px 26px; font-size:15px; position:relative; overflow:hidden; z-index:0; transition:color .35s; margin:4px; }
+  .btn::before { content:''; position:absolute; inset:0; background:var(--ink); transform:translateY(101%); transition:transform .35s cubic-bezier(.6,0,.2,1); z-index:-1; }
+  .btn:hover { color:var(--bg); } .btn:hover::before { transform:none; }
+  .links { margin-top:40px; display:flex; justify-content:center; gap:28px; font-size:14px; color:var(--soft); flex-wrap:wrap; }
+  .links a:hover { color:var(--ink); }
+  .small { margin-top:60px; font-size:12px; color:var(--soft); opacity:.7; display:flex; justify-content:space-between; }
+
+  /* lightbox */
+  .lb { position:fixed; inset:0; background:rgba(12,12,12,.94); z-index:70; display:none; align-items:center; justify-content:center; flex-direction:column; padding:30px; }
+  .lb.open { display:flex; animation:fade .3s; }
+  .lb img, .lb video { max-width:min(92vw,1400px); max-height:80vh; border-radius:6px; }
+  .lb .lbcap { color:#ddd; font-size:14px; margin-top:16px; text-align:center; }
+  .lb button { position:absolute; background:none; border:0; color:#fff; font-size:30px; cursor:pointer; padding:14px; }
+  .lb .x { top:10px; right:14px; } .lb .prev { left:10px; top:50%; } .lb .next { right:10px; top:50%; }
+
+  /* sample-only switches */
+  .switch { position:fixed; left:16px; bottom:16px; z-index:30; background:#141414; color:#fff; border-radius:16px; padding:8px; display:grid; gap:6px; font-size:12px; box-shadow:0 8px 24px rgba(0,0,0,.25); font-family:system-ui,sans-serif; }
+  .switch { max-width:calc(100vw - 32px); }
+  .switch .r { display:flex; gap:4px; align-items:center; flex-wrap:wrap; }
+  .switch span { width:78px; padding-left:6px; opacity:.6; }
+  .switch button { font:inherit; color:#fff; background:none; border:0; padding:6px 11px; border-radius:99px; cursor:pointer; opacity:.7; }
+  .switch button.on { background:#fff; color:#141414; opacity:1; }
+
+  @media (max-width:860px) {
+    .menu, .cta { display:none; } .menu-btn { display:grid; }
+    .case-grid { grid-template-columns:1fr; padding:0 14px 30px; } .case dl { grid-template-columns:1fr; gap:2px; } .case dd { margin-bottom:10px; }
+    .reel-head { padding:34px 20px 16px; } .reel-wrap { margin:0 14px 30px; border-radius:10px; }
+    .about { grid-template-columns:1fr; } .about .photo { border-right:0; border-bottom:1px solid var(--line); }
+    .about .text { padding:30px 22px; } .services { grid-template-columns:1fr; }
+    .job { grid-template-columns:1fr; gap:4px; } .job .where { text-align:left; }
+    .numbers { grid-template-columns:1fr; } .numbers div { border-right:0; border-bottom:1px solid var(--line); }
+    .hv-classic { padding:140px 18px 80px; } .grid { padding:4px 14px 14px; }
+    .hv-fan, .hv-reel { grid-template-columns:1fr; padding:120px 20px 60px; min-height:0; gap:10px; }
+    .fan { height:360px; } .fan .card { width:62%; }
+    .phone-wrap { height:520px; } .phone { width:240px; } .f2 { right:2%; }
+    .hv-marquee { padding-top:120px; } .m-top, .hv-marquee .meta { padding:0 20px; } .track img, .track video { height:170px; }
+    .switch { left:8px; right:8px; bottom:8px; } .switch span { width:64px; }
+  }
+  @media (prefers-reduced-motion:reduce) { *,*::before { animation:none!important; transition:none!important; } .ln>span,.reveal,.h-eyebrow,.h-sub,.h-btns,.hello{transform:none;opacity:1} .fan .card{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r))} .chip::before{transform:none} .scribble path{stroke-dashoffset:0} .meta{opacity:1} }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<div class="bar" id="bar">
+  <div class="pill">
+    <a class="brand" href="#top" aria-label="Mateen Ahsan, home"><span class="mono">MA</span>Mateen Ahsan</a>
+    <nav class="menu" id="menu" aria-label="Main"><span class="glow"></span><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+    <div class="actions">
+      <a class="icon-btn" href="https://wa.me/966547575470" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8A9 9 0 1 1 7.2 19.8L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg></a>
+      <a class="cta" href="assets/cv/Mateen_Ahsan_Design_CV.pdf" download>Download CV <span class="arr">↗</span></a>
+      <button class="icon-btn menu-btn" id="openMenu" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+    <div class="progress"><span id="prog"></span></div>
+  </div>
+</div>
+<div class="sheet" id="sheet"><button class="icon-btn close" id="closeMenu" aria-label="Close menu">✕</button><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="assets/cv/Mateen_Ahsan_Design_CV.pdf" download>Download CV ↗</a></div>
+
+<div class="wrap" id="top">
+  <section class="hero band">
+    <!-- A · Fan: the words on the left, three of the posters dealt out like printed proofs on the right -->
+    <div class="hv hv-fan">
+      <div class="h-text">
+        <div class="hello"><img src="assets/me.jpg" alt=""><span>Mateen Ahsan · Graphic Designer &amp; Video Editor · Riyadh</span></div>
+        <h1 class="h-big"><span class="ln"><span>I design</span></span><span class="ln"><span><span class="rot"></span></span></span><span class="ln"><span>that sell homes.</span></span></h1>
+        <p class="h-sub">Launch posters, brochures and reels for Dubai's biggest developers. Now available in Riyadh.</p>
+        <div class="h-btns"><a class="btn solid" href="#work">See the work</a><a class="btn" href="assets/cv/Mateen_Ahsan_Design_CV.pdf" download>Download CV</a></div>
+      </div>
+      <div class="fan" id="fan"><div class="fan-inner" id="fanInner">
+        <div class="card c1"><img src="assets/site/hampstead-laya-courtyard.jpg" alt=""></div>
+        <div class="card c2"><img src="assets/site/hampstead-chelsea-residences.jpg" alt=""></div>
+        <div class="card c3"><img src="assets/site/hampstead-altan-dubai-creek-harbour.jpg" alt=""></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="reel" class="reel band">
+    <div class="reel-head"><p class="eyebrow">Showreel 2026</p><h2 class="title">A minute of my work</h2></div>
+    <div class="reel-wrap reveal">
+      <video id="reelVid" muted loop playsinline preload="metadata"></video>
+      <button class="reel-play" id="reelPlay"><span>▶</span> Play with sound</button>
+    </div>
+  </section>
+
+  <section id="cases" class="cases band">
+    <div class="reel-head"><p class="eyebrow">Case studies</p><h2 class="title">Two jobs, start to finish</h2></div>
+    <div class="case-grid">
+      <article class="case reveal" data-client="Dant Al Omran">
+        <div class="case-cover"><img src="assets/site/dant-al-omran-company-introduction.jpg" alt="" loading="lazy"></div>
+        <p class="case-meta">Dant Al Omran Real Estate · Dubai · Apr – Oct 2025</p>
+        <h3>Social media, built from zero</h3>
+        <dl>
+          <dt>The brief</dt><dd>A real estate brokerage with no social media presence at all.</dd>
+          <dt>What I did</dt><dd>Set the strategy, brand guidelines and content calendar across Instagram, TikTok and WhatsApp Business. Shot and edited every reel, with voice-over, branded graphics and motion, and photographed listings and events.</dd>
+          <dt>The output</dt><dd>30+ reels in six months, for projects by Azizi, Emaar, Imtiaz, Binghatti, Samana and Deca.</dd>
+        </dl>
+        <button class="btn case-btn">See the work</button>
+      </article>
+      <article class="case reveal" data-client="Hampstead Homes">
+        <div class="case-cover"><img src="assets/site/hampstead-altan-dubai-creek-harbour.jpg" alt="" loading="lazy"></div>
+        <p class="case-meta">Hampstead Homes Real Estate · Dubai · Jan 2024 – May 2025</p>
+        <h3>Launch posters and listing films</h3>
+        <dl>
+          <dt>The brief</dt><dd>A brokerage selling new off-plan launches, needing material for each one the week it was released.</dd>
+          <dt>What I did</dt><dd>Designed the launch posters and digital brochures, and filmed and edited walkthrough reels for the company's Instagram.</dd>
+          <dt>The output</dt><dd>Around 60 project posts and reels, for developers including Emaar, Damac, Sobha, Binghatti, Samana and Omniyat.</dd>
+        </dl>
+        <button class="btn case-btn">See the work</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="work" class="band">
+    <div class="work-head band">
+      <div><p class="eyebrow">Selected work</p><h2 class="title">Posters, brochures and reels</h2></div>
+      <div class="tabs"><button class="on" data-f="all">All</button><button data-f="print">Real estate</button><button data-f="video">Video</button><button data-f="social">Social</button></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="more-wrap"><button class="btn" id="more">Show all work</button></div>
+  </section>
+
+  <section id="about" class="about band">
+    <div class="photo reveal">
+      <div class="portrait">
+        <img src="assets/me.jpg" alt="Mateen Ahsan" onerror="this.remove()">
+        <div class="ph"><div><b>MA</b>Your photo goes here</div></div>
+      </div>
+    </div>
+    <div class="text">
+      <p class="eyebrow reveal">About</p>
+      <p class="lead reveal">I design the posters, brochures and reels that sell homes. In Dubai I made launch material for Hampstead Homes and built Dant Al Omran's social media from nothing, shooting and editing 30+ property videos along the way.</p>
+      <p class="lead reveal" style="color:var(--soft)">Now in Riyadh with a transferable Iqama, ready to bring the same eye to Saudi real estate and brands.</p>
+      <div class="services reveal">
+        <div><i>01</i>Real estate posters &amp; brochures</div>
+        <div><i>02</i>Property video &amp; reels</div>
+        <div><i>03</i>Social media management</div>
+        <div><i>04</i>Brand identity &amp; consistency</div>
+        <div><i>05</i>App UI/UX design</div>
+        <div><i>06</i>Meta ads creative</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="exp band">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="title reveal" style="margin-bottom:14px">Where I've worked</h2>
+    <div class="job reveal"><span class="when">Oct 2025 – Now</span><div><b>Graphic Designer &amp; UI/UX Designer</b><span class="d">App screens, store graphics and marketing visuals for two live mobile apps.</span></div><span class="where">Next Frontier Labs · Remote</span></div>
+    <div class="job reveal"><span class="when">Apr – Oct 2025</span><div><b>Graphic Designer &amp; Social Media Manager</b><span class="d">Built the company's social presence from scratch. 30+ videos with voice-over and motion.</span></div><span class="where">Dant Al Omran Real Estate · Dubai</span></div>
+    <div class="job reveal"><span class="when">Jan 2024 – May 2025</span><div><b>Graphic Designer &amp; Video Editor</b><span class="d">Launch posters, brochures and walk-through films for Emaar, Azizi, Binghatti and Samana listings.</span></div><span class="where">Hampstead Homes · Dubai</span></div>
+  </section>
+
+  <section class="band">
+    <div class="numbers reveal"><div><b data-count="30">0</b><span>property videos produced</span></div><div><b data-count="2">0</b><span>Dubai real estate firms</span></div><div><b data-count="9">0</b><span>years in digital work</span></div></div>
+  </section>
+  <section class="brands band reveal">
+    <p class="eyebrow">Listings I've worked on</p>
+    <div class="row"><span>Emaar</span><span>Azizi</span><span>Binghatti</span><span>Samana</span><span>Damac</span></div>
+  </section>
+  <section class="tools band reveal">
+    <p class="eyebrow">Tools</p>
+    <div class="row"><span>Photoshop</span><span>Premiere Pro</span><span>Figma</span><span>CapCut</span><span>Canva</span><span>Meta Ads Manager</span></div>
+  </section>
+
+  <footer id="contact">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="reveal">Let's make something together.</h2>
+    <div class="reveal"><a class="btn" href="mailto:mateen.saud@gmail.com">mateen.saud@gmail.com</a><a class="btn" href="https://wa.me/966547575470" target="_blank">WhatsApp</a></div>
+    <div class="links reveal"><a href="https://www.linkedin.com/in/mateen-ahsan-6a0064180" target="_blank">LinkedIn ↗</a><a href="https://www.behance.net/mateenahsan1" target="_blank">Behance ↗</a><a href="assets/cv/Mateen_Ahsan_Design_CV.pdf" download>Download CV ↗</a></div>
+    <div class="small"><span>© 2026 Mateen Ahsan · Riyadh</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+</div>
+
+<div class="lb" id="lb"><button class="x" aria-label="Close">×</button><button class="prev" aria-label="Previous">‹</button><button class="next" aria-label="Next">›</button><div id="lbmedia"></div><div class="lbcap" id="lbcap"></div></div>
+
+<script src="assets/site/items.js?v=1792180864"></script>
+<script>
+// The work list is generated from the owner's "On the website" folder by build-content.py.
+const items = window.SITE_ITEMS || [];
+const grid = document.getElementById('grid');
+items.forEach((it, i) => {
+  const a = document.createElement('a'); a.className = 'item reveal'; a.dataset.f = it.f; a.dataset.i = i; a.href = '#';
+  a.innerHTML = `<div class="frame">${it.vid
+    ? `<video src="${it.vid}" poster="${it.poster}" muted loop playsinline preload="none"></video><span class="badge">▶ Reel</span>`
+    : `<img src="${it.img}" alt="${it.t}" loading="lazy">`}</div><div class="cap"><b>${it.t}</b><span>${it.c}</span></div>`;
+  grid.appendChild(a);
+});
+const vio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(()=>{}) : e.target.pause()), { threshold:.4 });
+grid.querySelectorAll('video').forEach(v => vio.observe(v));
+const moreWrap = document.querySelector('.more-wrap');
+grid.classList.add('short');
+document.getElementById('more').textContent = `Show all ${items.length} pieces`;
+document.getElementById('more').onclick = () => { grid.classList.remove('short'); moreWrap.classList.add('gone'); };
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  grid.querySelectorAll('.item').forEach(el => el.classList.toggle('hide', b.dataset.f !== 'all' && el.dataset.f !== b.dataset.f));
+  if (b.dataset.f !== 'all') { grid.classList.remove('short'); moreWrap.classList.add('gone'); }
+});
+
+// lightbox
+const lb = document.getElementById('lb'), lbm = document.getElementById('lbmedia'), lbc = document.getElementById('lbcap');
+let cur = 0, lbList = null;   // lbList: a case study's own pieces, browsed with the arrows instead of the grid
+const visible = () => lbList || [...grid.querySelectorAll('.item:not(.hide)')].map(el => +el.dataset.i);
+function show(i) { cur = i; const it = items[i];
+  lbm.innerHTML = it.vid ? `<video src="${it.vid}" controls autoplay playsinline></video>` : `<img src="${it.img}" alt="${it.t}">`;
+  lbc.textContent = it.t + ' — ' + it.c; lb.classList.add('open'); }
+function step(d) { const v = visible(); show(v[(v.indexOf(cur) + d + v.length) % v.length]); }
+function closeLb() { lb.classList.remove('open'); lbm.innerHTML = ''; lbList = null; }
+
+// Case studies: "See the work" opens that client's pieces in the viewer.
+document.querySelectorAll('.case').forEach(c => {
+  const mine = items.map((it, i) => it.c.startsWith(c.dataset.client) ? i : -1).filter(i => i >= 0);
+  const b = c.querySelector('.case-btn'); b.textContent = `See the work (${mine.length})`;
+  b.onclick = () => { if (!mine.length) return; lbList = mine; show(mine[0]); };
+});
+
+// Showreel: plays silently on screen as a preview; the button restarts it with sound and controls.
+const reel = window.SITE_SHOWREEL, reelSec = document.getElementById('reel'), reelVid = document.getElementById('reelVid');
+if (!reel) { reelSec.remove(); } else {
+  reelVid.poster = reel.poster; reelVid.src = reel.vid;
+  new IntersectionObserver(es => es.forEach(e => { if (reelVid.muted) e.isIntersecting ? reelVid.play().catch(() => {}) : reelVid.pause(); }), { threshold:.35 }).observe(reelVid);
+  document.getElementById('reelPlay').onclick = () => {
+    reelVid.muted = false; reelVid.loop = false; reelVid.controls = true; reelVid.currentTime = 0; reelVid.play();
+    reelVid.closest('.reel-wrap').classList.add('playing');
+  };
+}
+grid.addEventListener('click', e => { const el = e.target.closest('.item'); if (el) { e.preventDefault(); show(+el.dataset.i); } });
+lb.querySelector('.x').onclick = closeLb; lb.querySelector('.prev').onclick = () => step(-1); lb.querySelector('.next').onclick = () => step(1);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });
+
+// reveal on scroll, and the numbers count up once
+const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target);
+  e.target.querySelectorAll('[data-count]').forEach(n => { const to = +n.dataset.count, t0 = performance.now();
+    const tick = now => { const k = Math.min(1, (now - t0) / 1400); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (k === 1 ? '+' : ''); if (k < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); });
+}), { threshold:.12 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 0.08 + 's'; io.observe(el); });
+
+// the bar: compact after scrolling, reading progress, the section on screen gets a chip, a glow follows the mouse
+const bar = document.getElementById('bar'), prog = document.getElementById('prog'), menu = document.getElementById('menu');
+const links = [...menu.querySelectorAll('a')], secs = links.map(a => document.querySelector(a.getAttribute('href')));
+function onScroll() {
+  bar.classList.toggle('compact', scrollY > 60);
+  prog.style.transform = `scaleX(${scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)})`;
+  let on = -1; secs.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = i; });
+  links.forEach((a, i) => i === on ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'));
+}
+addEventListener('scroll', onScroll, { passive:true }); addEventListener('load', onScroll); addEventListener('resize', onScroll); onScroll();
+menu.addEventListener('pointermove', e => { const r = menu.getBoundingClientRect(); menu.style.setProperty('--gx', (e.clientX - r.left) + 'px'); });
+const sheet = document.getElementById('sheet');
+document.getElementById('openMenu').onclick = () => sheet.classList.add('open');
+document.getElementById('closeMenu').onclick = () => sheet.classList.remove('open');
+sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sheet.classList.remove('open')));
+
+/* ───────── moving background ───────── */
+let cv = document.getElementById('bg');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mouse = { x:-9999, y:-9999, sx:.5, sy:.5 };
+addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.sx = e.clientX / innerWidth; mouse.sy = e.clientY / innerHeight; });
+let mode = 'silk', raf = 0, ctx = null, gl = null, prog2 = null, pal = {};
+const hex = h => { h = h.trim().replace('#', ''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16) / 255); };
+function readPalette() { const cs = getComputedStyle(document.documentElement);
+  pal = { s0:hex(cs.getPropertyValue('--s0')), s1:hex(cs.getPropertyValue('--s1')), s2:hex(cs.getPropertyValue('--s2')), s3:hex(cs.getPropertyValue('--s3')), dot:cs.getPropertyValue('--dot').trim(), k:parseFloat(cs.getPropertyValue('--silk')) || .7 }; }
+readPalette();
+
+// Silk: a slow ribbon of light in the theme's colours, leaning towards the cursor (same idea as the Nexora hero).
+const FRAG = `precision mediump float; uniform vec2 res; uniform float t; uniform vec2 m; uniform vec3 c0,c1,c2,c3; uniform float k;
+void main(){ vec2 uv=gl_FragCoord.xy/res; float x=uv.x; float sy=1.0-uv.y;
+ float c=0.15+0.55*x+0.08*sin(x*3.2+t*.25)+0.04*sin(x*7.5-t*.4)+(m.y-.5)*.18*exp(-pow((x-m.x)*3.0,2.0));
+ float w=0.20+0.05*sin(x*2.0+t*.18); float d=(sy-c)/w; float a=d*.5+.5+.15*sin(x*10.0+sy*6.0+t*.5);
+ vec3 col=mix(c0,c1,smoothstep(0.,.35,a)); col=mix(col,c2,smoothstep(.4,.75,a)); col=mix(col,c3,smoothstep(.8,1.,a));
+ col+=.03*sin(a*24.0+t*.35)*smoothstep(1.,.2,abs(d));
+ float al=smoothstep(1.,.65,abs(d))*k; gl_FragColor=vec4(mix(c0,col,al),1.0); }`;
+function initGL() {
+  gl = cv.getContext('webgl'); if (!gl) return false;
+  const sh = (ty, src) => { const s = gl.createShader(ty); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  prog2 = gl.createProgram();
+  gl.attachShader(prog2, sh(gl.VERTEX_SHADER, 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}'));
+  gl.attachShader(prog2, sh(gl.FRAGMENT_SHADER, FRAG)); gl.linkProgram(prog2);
+  if (!gl.getProgramParameter(prog2, gl.LINK_STATUS)) return false;
+  gl.useProgram(prog2);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  const l = gl.getAttribLocation(prog2, 'p'); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, 2, gl.FLOAT, false, 0, 0);
+  return true;
+}
+const sm = { x:.5, y:.5 };
+function drawSilk(t) {
+  const s = 0.45, tw = Math.round(innerWidth * s), th = Math.round(innerHeight * s); // soft gradients: low resolution looks the same
+  if (cv.width !== tw || cv.height !== th) { cv.width = tw; cv.height = th; gl.viewport(0, 0, tw, th); }
+  sm.x += (mouse.sx - sm.x) * .03; sm.y += (mouse.sy - sm.y) * .03;
+  const u = n => gl.getUniformLocation(prog2, n);
+  gl.uniform2f(u('res'), tw, th); gl.uniform1f(u('t'), t + 3); gl.uniform2f(u('m'), sm.x, sm.y);
+  gl.uniform3fv(u('c0'), pal.s0); gl.uniform3fv(u('c1'), pal.s1); gl.uniform3fv(u('c2'), pal.s2); gl.uniform3fv(u('c3'), pal.s3); gl.uniform1f(u('k'), pal.k);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+}
+function fit2d() { const dpr = Math.min(devicePixelRatio || 1, 2), w = innerWidth, h = innerHeight;
+  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h); return [w, h]; }
+// Dots: a fine grid; dots near the cursor grow and step aside, then settle back.
+function drawDots(t) { const [w, h] = fit2d(), gap = 26, R = 140;
+  for (let y = gap / 2; y < h; y += gap) for (let x = gap / 2; x < w; x += gap) {
+    const dx = x - mouse.x, dy = y - mouse.y, dist = Math.hypot(dx, dy), k = Math.max(0, 1 - dist / R);
+    const wave = .5 + .5 * Math.sin(x * .012 + y * .01 - t * .8);
+    const px = x + (dist ? dx / dist : 0) * k * 10, py = y + (dist ? dy / dist : 0) * k * 10;
+    ctx.fillStyle = `rgba(${pal.dot},${.07 + wave * .04 + k * .45})`;
+    ctx.beginPath(); ctx.arc(px, py, .9 + k * 2.2, 0, 6.29); ctx.fill();
+  } }
+// Lines: soft contour lines like a site plan; the cursor raises a gentle hill.
+function drawLines(t) { const [w, h] = fit2d(); ctx.lineWidth = 1;
+  for (let i = 0, y0 = 20; y0 < h + 40; y0 += 22, i++) { ctx.beginPath();
+    for (let x = 0; x <= w; x += 8) { const dx = x - mouse.x, dy = y0 - mouse.y, bump = 38 * Math.exp(-(dx * dx + dy * dy) / 24200);
+      const y = y0 + 6 * Math.sin(x * .006 + i * .5 + t * .35) + 4 * Math.sin(x * .013 - t * .2) - bump; x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.strokeStyle = `rgba(${pal.dot},${i % 5 === 0 ? .10 : .05})`; ctx.stroke(); } }
+// A canvas holds either a WebGL or a 2D context, never both, so switching style swaps in a fresh canvas.
+function setMode(m) {
+  mode = m; cancelAnimationFrame(raf);
+  const fresh = cv.cloneNode(); cv.replaceWith(fresh); cv = fresh; gl = null; ctx = null;
+  if (m === 'silk') { if (!initGL()) { ctx = cv.getContext('2d'); m = 'dots'; } } else ctx = cv.getContext('2d');
+  const start = performance.now(), draw = m === 'silk' ? drawSilk : m === 'dots' ? drawDots : drawLines;
+  const loop = now => { if (!document.hidden) draw((now - start) / 1000); if (!reduce) raf = requestAnimationFrame(loop); };
+  raf = requestAnimationFrame(loop);
+}
+setMode('silk');
+
+// sample-only: colour and background switches
+document.querySelectorAll('.switch .r').forEach(r => r.querySelectorAll('button').forEach(b => b.onclick = () => {
+  r.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  if (r.dataset.group === 'theme') { document.documentElement.dataset.theme = b.dataset.v; readPalette(); }
+  else if (r.dataset.group === 'hero') { document.documentElement.dataset.hero = b.dataset.v; scrollTo({ top:0, behavior:'instant' }); fitRot(); }
+  else setMode(b.dataset.v);
+}));
+
+/* ───────── hero pieces ───────── */
+// The rotating word: each one slides up into place and the chip resizes to fit it.
+const WORDS = ['launch posters', 'brochures', 'property reels', 'social posts'];
+const rots = [...document.querySelectorAll('.rot')];
+rots.forEach(r => r.innerHTML = '<b>' + WORDS.map(w => `<span>${w}</span>`).join('') + '</b>');
+let wi = 0;
+function fitRot() { rots.forEach(r => { const s = r.querySelectorAll('b span')[wi]; if (!s || !r.offsetParent) return;
+  const m = document.createElement('span'); m.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;font-weight:500;letter-spacing:inherit';
+  m.textContent = WORDS[wi]; r.appendChild(m); r.style.width = (m.offsetWidth + r.offsetHeight * .3) + 'px'; m.remove();
+  r.querySelector('b').style.transform = `translateY(${-wi * s.offsetHeight}px)`; }); }
+document.fonts.ready.then(fitRot);
+if (!reduce) setInterval(() => { wi = (wi + 1) % WORDS.length; fitRot(); }, 2400);
+addEventListener('resize', fitRot);
+
+// A · the fan: once dealt, it opens a little while the cursor is over it and leans gently towards it.
+// The lean eases towards its target every frame, so it glides instead of following each twitch of the mouse.
+const fan = document.getElementById('fan'), fanInner = document.getElementById('fanInner');
+fan.querySelectorAll('.card').forEach(c => c.addEventListener('animationend', () => c.classList.add('dealt')));
+const lean = { x:0, y:0, tx:0, ty:0 };
+fan.addEventListener('pointerenter', () => fan.classList.add('open'));
+fan.addEventListener('pointerleave', () => { fan.classList.remove('open'); lean.tx = lean.ty = 0; });
+fan.addEventListener('pointermove', e => { const r = fan.getBoundingClientRect();
+  lean.tx = ((e.clientX - r.left) / r.width - .5) * 8; lean.ty = -((e.clientY - r.top) / r.height - .5) * 6; });
+(function glide() { lean.x += (lean.tx - lean.x) * .08; lean.y += (lean.ty - lean.y) * .08;
+  fanInner.style.transform = `rotateY(${lean.x.toFixed(2)}deg) rotateX(${lean.y.toFixed(2)}deg)`;
+  if (!reduce) requestAnimationFrame(glide); })();
+
+// C · the strip is the work itself, twice over so it can loop without a seam.
+const strip = items.filter(it => it.img).map(it => `<img src="${it.img}" alt="" loading="lazy">`).join('');
+const track = document.getElementById('track'); if (track) track.innerHTML = strip + strip;
+</script>
+</body>
+</html>
